@@ -11,4 +11,5 @@ footer				{ background: #eee; text-align: center; }
 nav span 			{ margin: 0px 10px 0px 0px; }
 figcaption 			{ font: 10px Georgia, serif; font-style: italic; }
 
-.daVideo  			{ float: left; height: 315px;}
+.daVideo  			{ float: left; height: 315px; }
+figure        		{ float: right; margin-right: 20px; }
