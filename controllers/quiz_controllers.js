@@ -7,14 +7,14 @@ exports.index = function(req, res) {
 	});
 };
 
-// GET /quizes/:id
+// GET /quizes/:quizId
 exports.show = function(req, res) {
 	models.Quiz.findById(req.params.quizId).then(function(quiz) {
 		res.render('quizes/show', { quiz: quiz});	
 	});	
 };
 
-// GET /quizes/:id/answer
+// GET /quizes/:quizId/answer
 exports.answer = function(req, res) {
 	models.Quiz.findById(req.params.quizId).then(function(quiz) {
 		if (req.query.respuesta === quiz.respuesta) {
