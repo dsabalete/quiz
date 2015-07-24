@@ -16,3 +16,5 @@ figcaption 			{ font: 10px Georgia, serif; font-style: italic; }
 /*.daVideo  			{ float: left; height: 315px; }*/
 figure        		{ float: left; margin-left: 20px; }
 .moto				{ float: none; width: 30em; margin-left: 20px;}
+
+fieldset 			{ margin: 20px; padding: 20px; text-align: left;}
