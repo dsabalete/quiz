@@ -12,12 +12,10 @@ nav span 			{ margin: 0 10px 0 0; }
 
 #ErrorMsgs			{ color: #f61; font-size: smaller; }
 
-figcaption 			{ font: 10px Georgia, serif; font-style: italic; }
+figcaption 			{ font: 1rem Georgia, serif; font-style: italic; }
 
 .contact			{ float: right; margin-right: 20px;}
 .contact ul  		{ list-style-type: none; }
 /*.daVideo  			{ float: left; height: 315px; }*/
-figure        		{ float: left; margin-left: 20px; }
-.moto				{ float: none; width: 30em; margin-left: 20px;}
 
 fieldset 			{ margin: 20px; padding: 20px; text-align: left;}

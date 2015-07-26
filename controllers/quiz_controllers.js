@@ -48,6 +48,18 @@ exports.answer = function(req, res) {
 	});
 };
 
+// GET /author
+exports.author = function(req, res) {
+	res.render('author', { 
+		nombre: 'David Sabalete', 
+		email: 'dsabalete@gmail.com',
+		twitter: 'https://twitter.com/dsabalete',
+		skype: 'skype:dsabalete?add',
+		about_url: 'http://about.me/david.sabalete',
+		errors: []
+	});
+};
+
 // GET /quizes/new
 exports.new = function(req, res) {
 	var quiz = models.Quiz.build( // crea objeto quiz
@@ -76,7 +88,3 @@ exports.create = function(req, res) {
 	});
 };
 
-// GET /author
-exports.author = function(req, res) {
-	res.render('author', { nombre: 'David Sabalete', errors: []});
-};

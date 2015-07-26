@@ -1,17 +1,17 @@
 <div class="contact">
 	<h4>Contacto</h4>
 	<ul>
-		<li class="mail-icon"><a href="mailto:dsabalete@gmail.com">dsabalete@gmail.com</a></li>
-		<li class="skype-icon"><a href="skype:dsabalete?add">Skype</a></li>
-		<li class="twitter-icon"><a href="https://twitter.com/dsabalete">Twitter</a></li>
+		<li class="mail-icon"><a href="mailto:<%= email %>"><%= email %></a></li>
+		<li class="skype-icon"><a href="<%= skype %>">Skype</a></li>
+		<li class="twitter-icon"><a href="<%= twitter %>">Twitter</a></li>
 	</ul>
 </div>
 
 <figure>
 	<h3>Créditos</h3>
-	<a href="http://about.me/david.sabalete"><img src="images/foto.jpg" alt="Foto raspbian" /></a>
+	<a href="<%= about_url %>"><img src="images/foto.jpg" alt="Foto raspbian" /></a>
 	<figcaption>
-		<a href="http://about.me/david.sabalete"><%= nombre %></a>, alias "raspbian"
+		<a href="<%= about_url %>"><%= nombre %></a>, alias "raspbian"
 	</figcaption>
 </figure>
 
