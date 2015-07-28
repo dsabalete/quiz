@@ -2,14 +2,16 @@ var express = require('express');
 var router = express.Router();
 
 var quizController = require('../controllers/quiz_controllers');
+var commentController = require('../controllers/comment_controllers');
 
 // Pagina de entrada (home page)
 router.get('/', function(req, res) {
   res.render('index', { title: 'Quiz', errors: []});
 });
 
-// Autoload de comandos con :quizId
+// Autoload de comandos con ids
 router.param('quizId', quizController.load); // autoload :quizId
+router.param('commentID', commentController.load); // autoload :commentId
 
 // Definición de rutas de /quizes
 router.get('/quizes', 						quizController.index);
@@ -21,5 +23,9 @@ router.post('/quizes/create',				quizController.create);
 router.get('/quizes/:quizId(\\d+)/edit',	quizController.edit);
 router.put('/quizes/:quizId(\\d+)',			quizController.update);
 router.delete('/quizes/:quizId(\\d+)',		quizController.destroy);
+
+// Definición de rutas de comentarios
+router.get('/quizes/:quizId(\\d+)/comments/new', commentController.new);
+router.post('/quizes/:quizId(\\d+)/comments',	 commentController.create);
 
 module.exports = router;
