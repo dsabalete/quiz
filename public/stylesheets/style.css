@@ -19,3 +19,4 @@ figcaption 			{ font: 1rem Georgia, serif; font-style: italic; }
 /*.daVideo  			{ float: left; height: 315px; }*/
 
 fieldset 			{ margin: 20px; padding: 20px; text-align: left;}
+.right				{ float: right; }
