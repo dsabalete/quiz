@@ -1,3 +1,12 @@
+// MW de autorización de accessos HTTP restingidos
+exports.loginRequired = function(req, res, next) {
+	if (req.session.user){
+		next();
+	} else {
+		res.redirect('/login');
+	}
+};
+
 // GET /login	-- Formulario de login
 exports.new = function(req, res) {
 	var errors = req.session.errors || {};
@@ -10,13 +19,13 @@ exports.new = function(req, res) {
 
 // POST /login	-- Crear la sesion
 exports.create = function(req, res) {
-	
+
 	var login = req.body.login;
 	var password = req.body.password;
-	
+
 	var userController = require('./user_controller');
 	userController.autenticar(login, password, function(error, user) {
-		
+
 		if (error) { // si hay error retornamos mensajes de error de sesión
 			req.session.errors = [{
 				"message": 'Se ha producido un error: ' + error
@@ -31,10 +40,7 @@ exports.create = function(req, res) {
 			id: user.id,
 			username: user.username
 		};
-		console.log("------> " + req.session.redir);
-		console.log("   " + req.session.user.id);
-		console.log("   " + req.session.user.username);
-		
+
 		res.redirect(req.session.redir.toString()); // redirección a path anterior a login
 	});
 };

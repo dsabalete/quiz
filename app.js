@@ -35,10 +35,13 @@ app.use(function(req, res, next) {
 		req.session.redir = '/';
 	}
 	
+	console.log("req.path ---> " + req.path);
+	
 	// guardar path en session.redir para despues de login
 	if (!req.path.match(/\/login|\/logout/)) {
+		console.log("guarda path en session.redir");
 		req.session.redir = req.path;
-	}
+	}	
 	
 	// Hacer visible req.session en las vistas
 	res.locals.session = req.session;
