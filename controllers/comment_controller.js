@@ -13,6 +13,9 @@ exports.load = function(req, res, next, commentId) {
 		} else {
 			next(new Error('No existe commentId=' + commentId));
 		}
+	}).
+	catch (function(error) {
+		next(error);
 	});
 };
 
@@ -50,6 +53,20 @@ exports.create = function(req, res) {
 				} // res.redirect: Redirección HTTP a lista de preguntas
 			}
 	).
+	catch (function(error) {
+		next(error);
+	});
+};
+
+// GET /quizes/:quizId/comments/:commentId/publish
+exports.publish = function(req, res) {
+	req.comment.publicado = true;
+
+	req.comment.save({
+		fields: ["publicado"]
+	}).then(function() {
+		res.redirect('/quizes/' + req.params.quizId);
+	}).
 	catch (function(error) {
 		next(error);
 	});

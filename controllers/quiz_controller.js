@@ -48,7 +48,7 @@ exports.index = function(req, res) {
 		where: ["upper(pregunta) like ?", search.toUpperCase()],
 		order: 'pregunta ASC'
 	}).then(function(quizes) {
-		res.render('quizes/index', {
+		res.render('quizes/index.ejs', {
 			quizes: quizes,
 			errors: []
 		});
@@ -60,7 +60,7 @@ exports.index = function(req, res) {
 
 // GET /quizes/:id
 exports.show = function(req, res) {
-	res.render('quizes/show', {
+	res.render('quizes/show.ejs', {
 		quiz: req.quiz,
 		errors: []
 	});
@@ -72,7 +72,7 @@ exports.answer = function(req, res) {
 	if (req.query.respuesta === req.quiz.respuesta) {
 		resultado = 'Correcto';
 	}
-	res.render('quizes/answer', {
+	res.render('quizes/answer.ejs', {
 		quiz: req.quiz,
 		respuesta: resultado,
 		errors: []
@@ -89,7 +89,7 @@ exports.new = function(req, res) {
 		}
 	);
 
-	res.render('quizes/new', {
+	res.render('quizes/new.ejs', {
 		quiz: quiz,
 		errors: []
 	});
@@ -104,7 +104,7 @@ exports.create = function(req, res) {
 		.validate()
 		.then(function(err) {
 			if (err) {
-				res.render('quizes/new', {
+				res.render('quizes/new.ejs', {
 					quiz: quiz,
 					errors: err.errors
 				});
@@ -124,7 +124,7 @@ exports.create = function(req, res) {
 exports.edit = function(req, res) {
 	var quiz = req.quiz; // Autoload de instancia de quiz
 
-	res.render('quizes/edit', {
+	res.render('quizes/edit.ejs', {
 		quiz: quiz,
 		errors: []
 	});
@@ -141,7 +141,7 @@ exports.update = function(req, res) {
 		.then(
 			function(err) {
 				if (err) {
-					res.render('quizes/edit', {
+					res.render('quizes/edit.ejs', {
 						quiz: req.quiz,
 						errors: err.errors
 					});
