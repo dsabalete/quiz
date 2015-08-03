@@ -1,6 +1,6 @@
 // MW de autorización de accessos HTTP restingidos
 exports.loginRequired = function(req, res, next) {
-	if (req.session.user){
+	if (req.session.user) {
 		next();
 	} else {
 		res.redirect('/login');
@@ -40,6 +40,8 @@ exports.create = function(req, res) {
 			id: user.id,
 			username: user.username
 		};
+
+		req.session.tiempo_inicio = Date.now();
 
 		res.redirect(req.session.redir.toString()); // redirección a path anterior a login
 	});
