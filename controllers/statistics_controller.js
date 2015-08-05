@@ -21,25 +21,20 @@ exports.calculate = function(req, res, next) {
 	}).then(function(comments) {
 		statistics.num_comments = comments;
 		statistics.avg_comments = Math.floor(statistics.num_comments / statistics.num_quizes);
-		return models.Quiz.count({ include : [ models.Comment ] }); // quizes con comentario
+		return models.Quiz.findAndCountAll({
+			include: [{
+				model: models.Comment,
+				required: true
+			}]
+		}); // num quizes con comentario
 	}).then(function(quizes) {
-		//console.log(" = = = = = " + quizes.length + " = = = = = ");
-		//console.log(JSON.stringify(quizes));
-		statistics.num_quizes_with_comment = quizes;
-		statistics.num_quizes_no_comment = 45;
-		//statistics.num_quizes_with_comment = quizes;
-		//statistics.num_quizes_no_comment = statistics.num_quizes - quizes;
+		statistics.num_quizes_with_comment = quizes.rows.length;
+		statistics.num_quizes_no_comment = statistics.num_quizes - statistics.num_quizes_with_comment;
 	}).
 	catch (function(err) {
 		next(err);
 	}).
 	finally(function() {
-		console.log("============= FIN =============");
-		//console.log(" =====> " + statistics.num_quizes + " preguntas");
-		//console.log(" =====> " + statistics.avg_comments + " comentarios");
-		//console.log(" =====> " + statistics.avg_comments + " comentarios por pregunta");
-		//console.log(" =====> " + statistics.num_quizes_no_comment + " preguntas sin comentarios");
-		//console.log(" =====> " + statistics.num_quizes_with_comment + " preguntas con comentarios");
 		next();
 	});
 };
