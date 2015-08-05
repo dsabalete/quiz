@@ -20,3 +20,5 @@ figcaption 			{ font: 1rem Georgia, serif; font-style: italic; }
 
 fieldset 			{ margin: 20px; padding: 20px; text-align: left;}
 .right				{ float: right; }
+
+.statistics 		{ list-style-type: none; text-align: left;}
